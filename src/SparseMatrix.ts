@@ -53,10 +53,10 @@ export default class SparseMatrix {
     // with this implementation, transpose is just a swap away in O(1)
     let temp: Map<number, Map<number, number>> | number = this.colEntries;
     this.colEntries = this.rowEntries;
-    this.rowEntries = temp as Map<number, Map<number, number>>;
+    this.rowEntries = temp;
     temp = this.cols;
     this.cols = this.rows;
-    this.rows = temp as number;
+    this.rows = temp;
     return this;
   }
 
