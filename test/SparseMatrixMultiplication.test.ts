@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import PuzzleSolution from '../src/PuzzleSolution';
+import SparseMatrix from '../src/SparseMatrix';
 import SparseMatrixMultiplication from '../src/SparseMatrixMultiplication';
 
 describe('SparseMatrixMultiplication', () => {
@@ -49,5 +50,20 @@ describe('SparseMatrixMultiplication', () => {
       values.push(items.pop());
     }
     expect(values).to.have.all.members(solution.flat());
+  });
+});
+describe('SparseMatrix transpose', () => {
+  it('transpose', () => {
+    const sparseMatrix = new SparseMatrix(2, 2);
+    sparseMatrix.addCell(0, 0, 1);
+    sparseMatrix.addCell(0, 1, 2);
+    sparseMatrix.addCell(1, 0, 3);
+    sparseMatrix.addCell(1, 1, 4);
+    expect(sparseMatrix.transpose().get()).to.eql([
+      [0, 0, 1],
+      [0, 1, 3],
+      [1, 0, 2],
+      [1, 1, 4],
+    ]);
   });
 });

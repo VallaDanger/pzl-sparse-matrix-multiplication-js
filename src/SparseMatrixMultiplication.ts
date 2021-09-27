@@ -48,7 +48,7 @@ export default class SparseMatrixMultiplication
       solution[row].fill(0);
       for (let index = 0; index < this.sizeOfRows; index++) {
         // if position [row][index] is 0, then
-        // every multiplciatio will yield 0.
+        // every multiplciation will yield 0.
         // Therefore, inner loop can be avoided,
         // effectively reducing the complexity to O(n^2)
         if (this.matrixLeft[row][index] > 0) {

@@ -1,7 +1,12 @@
 export default class SparseMatrix {
   private rows: number;
   private cols: number;
-
+  /**
+   * this implementation uses a map of maps to store:
+   * row to columns & colum to rows relations.
+   * It saves space by not storing cells with value 0.
+   * Acces time is always O(1)
+   */
   private rowEntries: Map<number, Map<number, number>>;
   private colEntries: Map<number, Map<number, number>>;
 
@@ -42,6 +47,17 @@ export default class SparseMatrix {
       }
     }
     return solution;
+  }
+
+  transpose(): SparseMatrix {
+    // with this implementation, transpose is just a swap away in O(1)
+    let temp: Map<number, Map<number, number>> | number = this.colEntries;
+    this.colEntries = this.rowEntries;
+    this.rowEntries = temp as Map<number, Map<number, number>>;
+    temp = this.cols;
+    this.cols = this.rows;
+    this.rows = temp as number;
+    return this;
   }
 
   get(): number[][] {
